@@ -3,8 +3,8 @@
     `define MPRJ_IO_PADS 38    
 `endif
 
-//`define USE_WB  1
-`define USE_LA  1
+`define USE_WB  1
+//`define USE_LA  1
 `define USE_IO  1
 //`define USE_SHARED_OPENRAM 1
 //`define USE_MEM 1
@@ -151,6 +151,26 @@ module wrapped_project(
     // Instantiate your module here, 
     // connecting what you need of the above signals. 
     // Use the buffered outputs for your module's outputs.
+    module teras_bridge_mpw5 (
+	    //
+        // Wishbone Slave ports (WB MI A)
+        .wb_clk_i  ( wb_clk_i      ),
+        .wb_rst_i  ( wb_rst_i      ),
+        .wbs_stb_i ( wbs_stb_i     ),
+        .wbs_cyc_i ( wbs_cyc_i     ),
+        .wbs_we_i  ( wbs_we_i      ),
+        .wbs_sel_i ( wbs_sel_i     ),
+        .wbs_dat_i ( wbs_dat_i     ),
+        .wbs_adr_i ( wbs_adr_i     ),
+        .wbs_ack_o ( buf_wbs_ack_o ),
+        .wbs_dat_o ( buf_wbs_dat_o ),
+    
+        // IOs
+        .io_in     ( io_in         ),
+        .io_out    ( buf_io_out    ),
+        .io_oeb    ( buf_io_oeb    )
+    
+    );
 
 endmodule 
 `default_nettype wire
