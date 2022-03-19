@@ -35,7 +35,6 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - properties.v
     - teras/src/arith_to_s3.v
     - teras/src/dspblock_6x6_f400_uid35.v
     - teras/src/fifo.v
