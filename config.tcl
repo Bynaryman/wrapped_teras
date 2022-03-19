@@ -34,6 +34,9 @@ set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 set ::env(DIE_AREA) "0 0 600 600"
 set ::env(FP_SIZING) absolute
 
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.3
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.3
+
 # define number of IO pads
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
 
