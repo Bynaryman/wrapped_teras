@@ -13,14 +13,14 @@ interfaces: ['wishbone', 'gpio']
 # test within caravel
 caravel_test:
   recipe: "coco_test"
-  directory: "caravel_test"
+  directory: "caravel_teras"
   id: 13
   module_name: "wrapped_teras"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: "teras"
   makefile: "Makefile"
 
 # run the wrapper formal proof
