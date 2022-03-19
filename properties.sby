@@ -5,10 +5,26 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v rest of your source files.v
-prep -top wrapped_project
+read -formal wrapper.v arith_to_s3.v dspblock_6x6_f400_uid35.v fifo.v intmultiplier_f400_uid31.v l2a.v leftshifter12_by_max_31_f400_uid38.v lzocshifter_6_to_6_counting_8_f400_uid18.v lzocshiftersticky_32_to_7_counting_64_f400_uid22.v pe_s3.v rightshiftersticky8_by_max_8_f400_uid24.v s3fdp.v scsdpram.v shiftreg.v systolicarraykernel.v systolicarray.v teras_bridge_mpw5.v teras.v
+prep -top wrapped_teras
 
 [files]
 wrapper.v
 properties.v
-rest of your source files.v
+teras/src/arith_to_s3.v
+teras/src/dspblock_6x6_f400_uid35.v
+teras/src/fifo.v
+teras/src/intmultiplier_f400_uid31.v
+teras/src/l2a.v
+teras/src/leftshifter12_by_max_31_f400_uid38.v
+teras/src/lzocshifter_6_to_6_counting_8_f400_uid18.v
+teras/src/lzocshiftersticky_32_to_7_counting_64_f400_uid22.v
+teras/src/pe_s3.v
+teras/src/rightshiftersticky8_by_max_8_f400_uid24.v
+teras/src/s3fdp.v
+teras/src/scsdpram.v
+teras/src/shiftreg.v
+teras/src/systolicarraykernel.v
+teras/src/systolicarray.v
+teras/src/teras_bridge_mpw5.v
+teras/src/teras.v

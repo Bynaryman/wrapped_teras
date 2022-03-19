@@ -1,21 +1,21 @@
 --- 
 # information
 project: 
-  title: "title"
-  description: "description"
-  picture: docs/empty.png
-  author: "Author"
+  title: "teras"
+  description: "matrix multiply unit with exact accumulators, no intermediate roundings, fused-dot-products, and posit arithmetic"
+  picture: pictures/teras_4x3.png
+  author: "Louis Ledoux AKA Binaryman"
   license: LICENSE
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['la1', 'gpio']
+interfaces: ['wishbone', 'gpio']
 
 # test within caravel
 caravel_test:
   recipe: "coco_test"
   directory: "caravel_test"
-  id: 1
-  module_name: "wrapped_project"
+  id: 13
+  module_name: "wrapped_teras"
 
 # module test
 module_test:
@@ -35,11 +35,28 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - properties.v
+    - teras/src/arith_to_s3.v
+    - teras/src/dspblock_6x6_f400_uid35.v
+    - teras/src/fifo.v
+    - teras/src/intmultiplier_f400_uid31.v
+    - teras/src/l2a.v
+    - teras/src/leftshifter12_by_max_31_f400_uid38.v
+    - teras/src/lzocshifter_6_to_6_counting_8_f400_uid18.v
+    - teras/src/lzocshiftersticky_32_to_7_counting_64_f400_uid22.v
+    - teras/src/pe_s3.v
+    - teras/src/rightshiftersticky8_by_max_8_f400_uid24.v
+    - teras/src/s3fdp.v
+    - teras/src/scsdpram.v
+    - teras/src/shiftreg.v
+    - teras/src/systolicarraykernel.v
+    - teras/src/systolicarray.v
+    - teras/src/teras_bridge_mpw5.v
+    - teras/src/teras.v
 
 # gds - check nothing on metal 5, DRC & LVS
 final:
   directory: "final"
-  gds_filename: "gds/project.gds"
-  lvs_filename: "verilog/gl/project.v"
-  lef_filename: "lef/project.lef"
+  gds_filename: "gds/wrapped_teras.gds"
+  lvs_filename: "verilog/gl/wrapped_teras.v"
+  lef_filename: "lef/wrapped_teras.lef"
