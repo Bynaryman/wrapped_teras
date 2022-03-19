@@ -3,7 +3,7 @@
 project: 
   title: "teras"
   description: "matrix multiply unit with exact accumulators, no intermediate roundings, fused-dot-products, and posit arithmetic"
-  picture: pictures/teras_4x3.png
+  picture: teras/pictures/teras_4x3.png
   author: "Louis Ledoux AKA Binaryman"
   license: LICENSE
 
