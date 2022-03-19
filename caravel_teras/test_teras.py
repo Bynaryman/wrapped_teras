@@ -36,25 +36,25 @@ async def test_all(dut):
     clock = Clock(dut.clk, 25, units="ns")
     cocotb.fork(clock.start())
 
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b01000000011000000000010000000001
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b01000000011000000000010000000001
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b00000000000100000100000010000011
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b00000000000100000100000010000011
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b10000000000100000000100001011000
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b10000000000100000000100001011000
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 0
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 0
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0
 
-    await RisingEdge(dut.uut.mprj.teras_bridge_inst.matrix_c_valid)
+    await RisingEdge(dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.matrix_c_valid)
     await ClockCycles(dut.clk, 2)
-    assert str(dut.uut.mprj.teras_bridge_inst.io_out.value)[37-32] == "1"
+    assert str(dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.io_out.value)[37-32] == "1"
 
 
 @cocotb.test()
@@ -66,22 +66,22 @@ async def test_all_gl(dut):
     await FallingEdge(dut.design_reset)
     print("design reset ok")
 
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b01000000011000000000010000000001
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b01000000011000000000010000000001
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b00000000000100000100000010000011
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b00000000000100000100000010000011
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 1
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0b10000000000100000000100001011000
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 1
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0b10000000000100000000100001011000
     await ClockCycles(dut.clk, 1)
-    dut.uut.mprj.teras_bridge_inst.wbs_stb_i.value = 0
-    dut.uut.mprj.teras_bridge_inst.wbs_cyc_i.value = 0
-    dut.uut.mprj.teras_bridge_inst.wbs_dat_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_stb_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_cyc_i.value = 0
+    dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.wbs_dat_i.value = 0
 
-    await RisingEdge(dut.uut.mprj.teras_bridge_inst.matrix_c_valid)
+    await RisingEdge(dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.matrix_c_valid)
     await ClockCycles(dut.clk, 2)
-    assert str(dut.uut.mprj.teras_bridge_inst.io_out.value)[37-32] == "1"
+    assert str(dut.uut.mprj.wrapped_teras_13.teras_bridge_mpw5_inst.io_out.value)[37-32] == "1"
