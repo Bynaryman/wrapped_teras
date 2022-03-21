@@ -8,7 +8,7 @@ Both reasons motivated to name this GEMM accelerator generator "TERAS". Indeed, 
 ## Introduction
 
 TERAS is a command line generator that produces kernel to compute the BLAS level3 routine GEMM aka Matrix-Matrix Multiplication (MMM). It focuses on arithmetic aspects to be able to save power consumption while offering more precise and reproducible results.  
-The original design targets FPGAs even if it is target agnostic. One of the design choice was a heavy use of flip flops as they are present in good quantity in mdoern FPGAs ( ~2x than LUTs). That is why there is a paragraph on FPGA evaluation and one for the mpw5 adaptation.
+The original design targets FPGAs even if it is target agnostic. One of the design choice was a heavy use of flip flops as they are present in good quantity in modern FPGAs ( ~2x than LUTs). That is why there is a paragraph on FPGA evaluation and one for the mpw5 adaptation.
 
 ## Generator Overview
 
