@@ -14,17 +14,17 @@ The original design targets FPGAs even if it is target agnostic. One of the desi
 
 The kernels rely on 2D (NxM) meshes implemented by Systolic Arrays. Every signal is transferred by the mean of local and distributed connections to improve scalability (see Fig below). 
   
-![overall_SA](https://user-images.githubusercontent.com/937470/159264946-99aeecf9-ac5a-43d4-8787-e48fa6afb2f5.png)
+![overall_SA](https://user-images.githubusercontent.com/937470/161559284-bda5cf49-2cf6-426a-a57b-295eebc6874b.png)
 
 
 At each clock cycle, N and M real numbers are taken from rows of input Matrix A and columns of input matrix B, rexpectively. Such numbers arrive in a dense form, which is the computer format they are stored in memory before getting translated into "S3" by "A2S3" modules. S3 is a handmade format that allows to represent any incoming computer format while being optimized for hardware internal cells /  blocks.
 
 The data in S3 format that represent the coeficients of the matrixes go inside the Processing Elements (PEs). Each PE has the role to do a fused-dot-product (FDP), i.e. a dot-product without any intermediate rounding. Additionally, the PEs pass the data to south and east neighbours. Example in the image below:  
-![PE](https://user-images.githubusercontent.com/937470/159266205-8a597991-d8b3-4fc9-b564-84875ed32365.png)
+![PE](https://user-images.githubusercontent.com/937470/161559537-d5735fe3-31c7-48f2-baac-6a2b806efcbf.png)
 
 The hardware responsible for the fused dot product is S3FDP and is depicted below:  
   
-![s3fdp](https://user-images.githubusercontent.com/937470/159269017-88714630-3ec6-4393-8e5b-f01404c09623.png)
+![s3fdp](https://user-images.githubusercontent.com/937470/161559861-dd94410d-38a9-4bf8-9945-821b69895a8f.png)
 
 
 Other peculiarities of this generator comprise:
@@ -35,12 +35,12 @@ Other peculiarities of this generator comprise:
 ## FPGA evaluation
 
 Following results should have similar trends for ASIC with several less order of magnitude with regard to throughput and performace.
+  
+![fpga_dse](https://user-images.githubusercontent.com/937470/161560423-e654d06a-f39e-46b4-aeec-1d6739de8396.png)
 
-![fpga floorplanning](https://user-images.githubusercontent.com/937470/159265448-f153a1e6-d968-42cf-819d-09c548721586.png)
+![fpga_floorplanning](https://user-images.githubusercontent.com/937470/161560261-af9f6d1a-434a-4d74-aeea-5e722e9bc8b5.png)
 
-![fpga dse](https://user-images.githubusercontent.com/937470/159265742-63a7a600-7dc8-4ebc-85d5-d6e5a69e4919.png)
-
-![power9 runtime](https://user-images.githubusercontent.com/937470/159265877-1684e662-3ac7-45ab-ae37-432079b5cffe.png)
+![power9_runtime](https://user-images.githubusercontent.com/937470/161560583-5ad7011e-e3c7-4923-a9a8-28a448d63288.png)
 
 ![accuracy_vs_en eff](https://user-images.githubusercontent.com/937470/159266031-37893968-c0dd-47cf-9bf4-97b38a5baa04.png)
 
