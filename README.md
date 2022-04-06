@@ -72,7 +72,7 @@ It is a mechanism I developped to allow the output-stationnary systolic array to
 This is important to me because my final setup to evaluate the arrays is with CAPI2, OpenCAPI ([capi_wiki](https://en.wikipedia.org/wiki/Coherent_Accelerator_Processor_Interface)), which povide duplex throughputs approaching 20GB/s.  
 Without HSSD, therefore, without pipelining input and output operations, the 20GB/s would be significantly lowered. However, as the below code snippet shows, there is possibility to generate the array without HSSD, which creates global routes and big muxes.  
 HSSD comes at the cost of N*M*2*size_accumulator Flip Flops.  
-This is not a problem in the case of modern FPGAs as they contain ~2x FFs more than LUTs. This is a problem for ASIC as FFs are expensive.
+This is not a problem in the case of modern FPGAs as they contain ~2x FFs more than LUTs. This is a problem for ASIC as FFs are expensive (~30 transistors in sky130).
 
 ## FPGA evaluation
 
@@ -90,6 +90,16 @@ Following results should have similar trends for ASIC with several less order of
 
 ## MPW5 and ASIC adaptation
 
+### Integration
+The first adaptation is regarding the number I/Os. Indeed, teras is not designed to minimize the number of I/Os as it is originally designed for high-throughput and low latency links.  
+For mpw5, I have connected the inputs rowsA and colsB to the same lsb of wishbone data bus, therefore the operation performed is C=A.A_T (where A_T is the transposed of A).  
+The output colsC and corresponding valid signals go to the external pins of the chip.  
+
+### Too much flip flops
+
+### Write sky130 target as  part of flopoco
+A good step to improve flopoco and generation of datapaths for ASIC would be to write the sky130 target as part of flopoco and issue a pull request to their repo.  
+This step is too long for me at the moment. For instance, I just learnt that 2 gates in ASIC can be faster than 1. One day maybe...
 
 
 # License
