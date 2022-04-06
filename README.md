@@ -29,7 +29,44 @@ The hardware responsible for the fused dot product is S3FDP and is depicted belo
 
 Other peculiarities of this generator comprise:
 
-* automated pipeline (flopoco)
+* automated pipeline ([flopoco](https://flopoco.org/))  
+An open source framework to generate FLOting POints COres but not only. Flopoco philosophy is that it allows to generate just what is needed for the computation without mimicking general purpose processors floating-points units. Flopoco takes as input, some behavioral hardware description and the couple (freq + target), and then outputs the necessary and sufficient synthetizable VHDL.  
+In this work, I have made many FloPoCo Operators, including the whole Systolic Array, which allows me to generate any configuration I wish in less than a second. Example below:  
+
+```
+./flopoco SystolicArray N=3 M=3 arithmetic_in=posit:8:0 arithmetic_out=same msb_summand=12 lsb_summand=-12 nb_bits_ovf=7 has_HSSD=true chunk_size=-1 frequency=400 target=Kintex7 name=SystolicArray outputFile=SystolicArray.vhdl
+
+*** Final report ***
+Output file: SystolicArray.vhdl
+Target: Kintex7 @ 400 MHz
+|   |---Entity LZOCShifter_6_to_6_counting_8_F400_uid18
+|   |      Pipeline depth = 1
+|---Entity Arith_to_S3
+|      Pipeline depth = 2
+|   |---Entity LZOCShifterSticky_32_to_7_counting_64_F400_uid22
+|   |      Pipeline depth = 3
+|   |---Entity RightShifterSticky8_by_max_8_F400_uid24
+|   |      Pipeline depth = 2
+|---Entity l2a
+|      Pipeline depth = 7
+|   |   |   |   |---Entity DSPBlock_6x6_F400_uid35
+|   |   |   |   |      Not pipelined
+|   |   |   |---Entity IntMultiplier_F400_uid31
+|   |   |   |      Not pipelined
+|   |   |   |---Entity LeftShifter12_by_max_31_F400_uid38
+|   |   |   |      Pipeline depth = 1
+|   |   |---Entity s3fdp
+|   |   |      Pipeline depth = 2
+|   |---Entity PE_S3
+|   |      Not pipelined
+|---Entity SystolicArrayKernel
+|      Not pipelined
+Entity SystolicArray
+   Not pipelined
+
+```
+
+
 * HSSD
 
 ## FPGA evaluation
