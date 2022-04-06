@@ -70,7 +70,8 @@ Entity SystolicArray
 * HSSD (Half Speed Sink Down)  
 It is a mechanism I developped to allow the output-stationnary systolic array to output intermediate and final results while still receiving data.  
 This is important to me because my final setup to evaluate the arrays is with CAPI2, OpenCAPI ([capi_wiki](https://en.wikipedia.org/wiki/Coherent_Accelerator_Processor_Interface)), which povide duplex throughputs approaching 20GB/s.  
-Without HSSD, therefore, without pipelining input and output operations, the 20GB/s would be significantly lowered. However, as the below code snippet shows, there is possibility to generate the array without HSSD, which creates global routes and big muxes.  
+Without HSSD, therefore, without pipelining input and output operations, the 20GB/s would be significantly lowered.  
+However, as the above code snippet shows, there is possibility to generate the array without HSSD, which creates global routes and big muxes.  
 HSSD comes at the cost of N*M*2*size_accumulator Flip Flops.  
 This is not a problem in the case of modern FPGAs as they contain ~2x FFs more than LUTs. This is a problem for ASIC as FFs are expensive (~30 transistors in sky130).
 
