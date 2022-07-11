@@ -110,3 +110,18 @@ This project is [licensed under Apache 2](LICENSE)
 # Authors
 
 Louis LEDOUX (Binaryman)
+
+# Citing
+
+To cite this work, please refer to the article published in FCCM2022 whose bibtex is shown below
+
+```
+@INPROCEEDINGS{
+    ledoux2022,  
+    author={Ledoux, Louis and Casas, Marc},
+    booktitle={2022 IEEE 30th Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)},
+    title={A Generator of Numerically-Tailored and High-Throughput Accelerators for Batched GEMMs},
+    year={2022},
+    doi={10.1109/FCCM53951.2022.9786164}
+}
+```
